@@ -1,6 +1,6 @@
-FROM debian:stable-slim
+FROM pythia:develop
 
 WORKDIR /userdata
 COPY dssat47 /app/dssat47/
 
-ENTRYPOINT ["/app/dssat47/dscsm047"]
+ENTRYPOINT ["/app/pythia.sh"]
