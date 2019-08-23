@@ -1,4 +1,4 @@
-FROM dssat-pythia-base
+FROM pythia
 
 WORKDIR /userdata
 COPY dssat47 /app/dssat47/
