@@ -5,15 +5,16 @@ RUN apt-get update
 RUN apt-get install -y ca-certificates gfortran cmake
 
 # Checkout code
-ADD src /DSSAT
+ADD src /dssat-csm-os
 
 # Compile
-RUN mkdir build
-WORKDIR /DSSAT/build
+WORKDIR /dssat-csm-os/build
+RUN cmake -DCMAKE_INSTALL_PREFIX=/app/dssat ..
 RUN cmake ..
 RUN make
+RUN make install
 
 FROM debian:stable-slim
-COPY --from=build /DSSAT/build/bin/* /app/dssat/
+COPY --from=build /app/dssat /app/dssat/
 WORKDIR /app/dssat
 ENTRYPOINT ["./dscsm048"]
