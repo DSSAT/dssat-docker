@@ -21,4 +21,4 @@ RUN make install
 FROM debian:stable-slim
 COPY --from=build /app/dssat /app/dssat/
 WORKDIR /app/dssat
-ENTRYPOINT ["./dscsm048"]
+ENTRYPOINT ["/app/dssat/dscsm048"]
